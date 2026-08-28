@@ -72,4 +72,30 @@ token counts → data.usage.{prompt_tokens, completion_tokens, total_tokens}
 
 ## Lesson 1 — Zero-Shot Prompting
 
-<!-- locked until Challenge 0 is done -->
+**In one sentence:**
+Asking the model to do a task from an instruction alone — no example
+input/output pairs shown first — relying on what it already learned in
+training to figure out the format and the answer.
+
+**Proof:**
+`sentimentReview()` in `zero-shot.js` — the prompt is just the instruction
+("classify into Positive/Negative/Neutral, one word only") glued to the raw
+input, with zero labeled examples in between. Ran it on `"It arrived on
+Tuesday."` and got back `Neutral`, so the model inferred both the category
+set and the one-word format from the instruction text alone.
+
+**Gotcha:**
+No examples means no anchor for edge cases — ambiguous input (like a review
+that's mixed or sarcastic) has nothing to pattern-match against, so the model
+falls back on its own judgment of "neutral-ish" wording. That's also why the
+instruction has to spell out the output format explicitly ("one word nothing
+else") — without an example to imply the shape, the model might otherwise
+add punctuation or a full sentence.
+
+**When I'd use it:**
+Simple, well-known tasks where the category/format is obvious from
+description alone (classification, translation, basic extraction) and where
+I don't have — or don't want to spend tokens on — labeled examples. Once
+edge cases start getting misclassified, that's the signal to move to
+few-shot instead.
+
