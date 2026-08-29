@@ -34,14 +34,15 @@ language, or when I want to see every step happening, like today.
 
 **Endpoint map** (the one table worth keeping verbatim):
 
-| I write | It POSTs to |
-|---|---|
-| `client.chat.completions.create()` | `/v1/chat/completions` |
-| `client.completions.create()` | `/v1/completions` (legacy — takes `prompt`, not `messages`) |
-| `client.embeddings.create()` | `/v1/embeddings` |
-| `client.images.generate()` | `/v1/images/generations` |
+| I write                            | It POSTs to                                                 |
+| ---------------------------------- | ----------------------------------------------------------- |
+| `client.chat.completions.create()` | `/v1/chat/completions`                                      |
+| `client.completions.create()`      | `/v1/completions` (legacy — takes `prompt`, not `messages`) |
+| `client.embeddings.create()`       | `/v1/embeddings`                                            |
+| `client.images.generate()`         | `/v1/images/generations`                                    |
 
 **Reference — round trip (raw fetch):**
+
 ```js
 fetch(url, {
   method: "POST",
@@ -50,19 +51,21 @@ fetch(url, {
     "Content-Type": "application/json",
   },
   body: JSON.stringify({ model, messages }),
-})
+});
 // res = Response envelope, body is an unread ReadableStream
 // await res.json() drains + parses it into a real object
 ```
 
 **Reference — same call, SDK:**
+
 ```js
-client.chat.completions.create({ model, messages })
+client.chat.completions.create({ model, messages });
 // same POST, same headers, same stringify — done internally
 // returns the parsed object directly, no res.json() step
 ```
 
 **Reference — where things live in the response:**
+
 ```
 reply text   → data.choices[0].message.content
 token counts → data.usage.{prompt_tokens, completion_tokens, total_tokens}
@@ -97,5 +100,4 @@ Simple, well-known tasks where the category/format is obvious from
 description alone (classification, translation, basic extraction) and where
 I don't have — or don't want to spend tokens on — labeled examples. Once
 edge cases start getting misclassified, that's the signal to move to
-few-shot instead.
-
+few-shot instead
