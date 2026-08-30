@@ -100,4 +100,4 @@ Simple, well-known tasks where the category/format is obvious from
 description alone (classification, translation, basic extraction) and where
 I don't have — or don't want to spend tokens on — labeled examples. Once
 edge cases start getting misclassified, that's the signal to move to
-few-shot instead
+few-shot instead.
