@@ -39,9 +39,8 @@ async function fewShotSentiment(prompt) {
   return sentiment.choices[0].message.content;
 }
 
-// mixed/ambiguous on purpose: has a complaint AND a positive resolution
-const trickyReview =
-  "The food was cold when it arrived, but the staff apologized and gave us a free dessert.";
+// sarcastic on purpose: enthusiastic wording, actually negative
+const trickyReview = "Wow, three weeks late again, real professional.";
 
 const zero = await zeroShotSentiment(trickyReview);
 const few = await fewShotSentiment(trickyReview);

@@ -101,3 +101,38 @@ description alone (classification, translation, basic extraction) and where
 I don't have — or don't want to spend tokens on — labeled examples. Once
 edge cases start getting misclassified, that's the signal to move to
 few-shot instead.
+
+---
+
+## Lesson 2 — Few-Shot Prompting
+
+**In one sentence:**
+Same as zero-shot, but the prompt includes a handful of labeled
+input/output examples before the real input, so the model has a concrete
+pattern to match instead of just a description of the task.
+
+**Proof:**
+`few-shot.js` — added 3 labeled review→sentiment examples in front of the
+same classification task from `zero-shot.js`, then ran both versions
+side by side on two tricky reviews:
+- Mixed review ("food was cold, but staff apologized"): both zero-shot and
+  few-shot said `Neutral`.
+- Sarcastic review ("Wow, three weeks late again, real professional."):
+  both zero-shot and few-shot said `Negative`.
+No divergence in either case — `gpt-4o` already handles generic sentiment
+well without examples, so the extra examples changed nothing here.
+
+**Gotcha:**
+Few-shot isn't a free accuracy boost — it only helps when the model
+doesn't already have a strong prior for the task. For a mainstream task
+like sentiment, the model's zero-shot judgment already matches what 3
+examples would teach it, so I paid extra tokens for the same answer.
+The real test of few-shot needs a task the model *wouldn't* know how to
+format or categorize on its own.
+
+**When I'd use it:**
+Custom or unusual categories the model hasn't seen conventions for (e.g.
+"urgent/routine/spam" instead of positive/negative/neutral), or when I
+need a very specific output shape/style that's easier to show than
+describe. Not worth it for tasks the model already does well zero-shot —
+verify that first before assuming few-shot will help.
