@@ -5,7 +5,7 @@ const client = new OpenAi({ apiKey: process.env.OPENAI_API_KEY });
 
 // multi-step word problem — easy to get wrong by pattern-matching the wrong numbers
 const problem =
-  "A store had 140 apples. It sold 77% of them in the morning, then sold 18 more in the afternoon. How many apples are left?";
+  "A store had 140 apples. It sold 7% of them in the morning, then sold 18 more in the afternoon. How many apples are left?";
 
 async function directAnswer(prompt) {
   const res = await client.chat.completions.create({
