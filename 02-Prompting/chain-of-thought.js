@@ -13,7 +13,7 @@ async function directAnswer(prompt) {
     messages: [
       {
         role: "user",
-        content: `Answer with just the final number, nothing else.\n\n${prompt}`,
+        content: `Answer with just the final number only , nothing else.\n\n${prompt}`,
       },
     ],
   });
