@@ -37,4 +37,4 @@ async function main(params) {
   (await geminiCall(params), await claudeCall(params));
   await openAiCall(params);
 }
-main("hi, how are u ");
+main("hi, how are u! what i can help  ");
