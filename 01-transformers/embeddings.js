@@ -5,7 +5,7 @@ const cleint = new OpenAI();
 
 const embedding = await cleint.embeddings.create({
   model: "text-embedding-3-small",
-  input: "Hi this is the embeddings learning model",
+  input: "Hi this is the embeddings learning model to test the embeding",
   encoding_format: "float",
 });
 
