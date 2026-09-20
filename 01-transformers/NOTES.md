@@ -12,3 +12,10 @@ It is a simple process to convert the sentence into small small parts called tok
 
 **Gotcha:**
 Capital and small letters create different tokens.
+
+---
+
+## Lesson 4 — Embeddings
+
+**In one sentence:**
+An embedding is a way of turning a piece of text into a list of fixed-length numbers, positioned in space such that texts with similar meaning end up close to each other, and texts with different meaning end up far apart.
