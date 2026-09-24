@@ -9,6 +9,6 @@ const embedding = await cleint.embeddings.create({
   encoding_format: "float",
 });
 
-console.log(embedding.data[0].embedding);
+console.log(embedding.data[0].embedding.length);
 
 // so function to get the embeddings
