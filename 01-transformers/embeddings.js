@@ -5,10 +5,10 @@ const cleint = new OpenAI();
 
 const embedding = await cleint.embeddings.create({
   model: "text-embedding-3-small",
-  input: "Hi kunal bhanuse  .",
+  input: "Hi kunal bhanuse a sowtware enginerr .",
   encoding_format: "float",
 });
 
-console.log(embedding.data[0].embedding);
+console.log(embedding.data[0].embedding.length);
 
 // so function to get the embeddings
