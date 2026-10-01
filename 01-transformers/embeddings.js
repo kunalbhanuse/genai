@@ -12,3 +12,4 @@ const embedding = await cleint.embeddings.create({
 console.log(embedding.data[0].embedding.length);
 
 // so function to get the embeddings
+// i got teh embeddings now
