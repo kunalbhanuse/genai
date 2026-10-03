@@ -33,6 +33,12 @@ async function openAiCall(prompt) {
   console.log("OpenAI:-", result.output_text);
 }
 
+const embedding = await cleint.embeddings.create({
+  model: "text-embedding-3-small",
+  input: "Hi kunal bhanuse a software developer .",
+  encoding_format: "float",
+});
+
 async function main(params) {
   (await geminiCall(params), await claudeCall(params));
   await openAiCall(params);
