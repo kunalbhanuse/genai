@@ -35,7 +35,7 @@ async function openAiCall(prompt) {
 
 const embedding = await cleint.embeddings.create({
   model: "text-embedding-3-small",
-  input: "Hi kunal bhanuse a software emgineer .",
+  input: "Hi kunal bhanuse  .",
   encoding_format: "float",
 });
 
